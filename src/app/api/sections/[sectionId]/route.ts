@@ -48,10 +48,10 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const dataToUpdate = { ...validatedData };
-    if (validatedData.plainText) {
-      dataToUpdate.latexText = convertToLatex(validatedData.plainText);
-    }
+    const dataToUpdate = { 
+      ...validatedData,
+      ...(validatedData.plainText ? { latexText: convertToLatex(validatedData.plainText) } : {})
+    };
 
     const updatedSection = await prisma.section.update({
       where: { id: sectionId },
