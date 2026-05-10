@@ -5,12 +5,12 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-const liveblocks = new Liveblocks({
-  secret: process.env.LIVEBLOCKS_SECRET_KEY!,
-});
-
 export async function POST(request: Request) {
   try {
+    const liveblocks = new Liveblocks({
+      secret: process.env.LIVEBLOCKS_SECRET_KEY || "sk_dummy_key_to_prevent_build_crash",
+    });
+
     const { userId } = await auth();
     // const user = await currentUser();
 
