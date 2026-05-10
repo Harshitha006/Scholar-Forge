@@ -7,3 +7,5 @@ Features:
 - Collaboration
 - Research paper management
 - Research paper organization
+- Automatic Citations and References 
+- AI Summary and analysis of papers
